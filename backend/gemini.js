@@ -12,7 +12,7 @@ function getModel() {
     throw new Error('Gemini API key not set. Please add it in Settings.');
   }
   const genAI = new GoogleGenerativeAI(apiKey);
-  return genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+  return genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 }
 
 // ---- Simple chat reply ----
