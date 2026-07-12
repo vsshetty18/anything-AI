@@ -13,7 +13,24 @@ const settingsRoutes = require('./routes/settings');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+// Allow requests from your deployed frontend (Vercel) and local dev.
+// Set FRONTEND_URL on Render to your Vercel domain, e.g. https://anything-ai.vercel.app
+const allowedOrigins = [
+  'http://localhost:5173',
+  process.env.FRONTEND_URL
+].filter(Boolean);
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (e.g. Electron desktop app, curl, Postman)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
 app.use(express.json());
 
 // Mount all routes under /api
