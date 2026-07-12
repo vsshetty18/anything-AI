@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+backend/.env
+.env
+
+# Database
+backend/anything-ai.db
+backend/anything-ai.db-journal
+backend/anything-ai.db-wal
+backend/anything-ai.db-shm
+
+# Build output
+frontend/dist/
+
+# Screenshots (user-generated at runtime)
+screenshots/
+
+# Electron build artifacts
+dist/
+out/
+release/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+npm-debug.log*
