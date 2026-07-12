@@ -1,7 +1,9 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 
-const dbPath = path.join(__dirname, 'anything-ai.db');
+// On Render, mount a Persistent Disk (e.g. at /data) and set DB_PATH=/data/anything-ai.db
+// Locally, this falls back to a file right next to this script - no setup needed
+const dbPath = process.env.DB_PATH || path.join(__dirname, 'anything-ai.db');
 const db = new Database(dbPath);
 
 db.pragma('journal_mode = WAL');
