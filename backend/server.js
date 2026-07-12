@@ -26,11 +26,11 @@ app.use(cors({
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      console.log('CORS blocked origin:', origin, '| allowed:', allowedOrigins);
+      callback(null, false); // reject cleanly - do NOT throw, that causes a 500
     }
   }
 }));
-
 app.use(express.json());
 
 // Mount all routes under /api
