@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: anything-ai-backend
+    runtime: node
+    region: singapore
+    plan: free
+    buildCommand: npm install
+    startCommand: node backend/server.js
+    envVars:
+      - key: DB_PATH
+        value: /data/anything-ai.db
+      - key: FRONTEND_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+    disk:
+      name: anything-ai-data
+      mountPath: /data
+      sizeGB: 1
